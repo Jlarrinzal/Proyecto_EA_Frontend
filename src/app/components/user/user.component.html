@@ -1,0 +1,20 @@
+<div>
+    <label for="new-user">User name: </label>
+    <input id="new-user" #userName />
+  
+    
+    <button type="button" class="add-button" (click)="add(userName.value); userName.value=''">
+      Add user
+    </button>
+  </div>
+  <h2>Users</h2>
+  <ul class="user">
+    
+    <li *ngFor="let user of users">
+        <a routerLink="/detail/{{user._id}}">
+          <span class="badge">{{user._id}}</span> {{user.username}}
+        </a>
+        <button type="button" class="delete" title="delete hero"
+          (click)="delete(user)">x</button>
+      </li>
+    </ul>
