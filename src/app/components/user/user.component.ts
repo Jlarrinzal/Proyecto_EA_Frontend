@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { PeticionesService } from 'src/app/services/peticiones.service';
 import { Router } from '@angular/router';
+import { NgModel } from '@angular/forms';
 
 
 @Component({
@@ -11,6 +12,13 @@ import { Router } from '@angular/router';
 })
 export class UserComponent implements OnInit {
   users: User[] = [];
+
+  user:User = {
+    _id:'',
+    username: '',
+    email: '',
+    password: ''
+  }
 
   constructor(
     private peticionesService: PeticionesService,
@@ -27,22 +35,21 @@ export class UserComponent implements OnInit {
     .subscribe(users => this.users = users);
   }
   //addUser method
-  add(username: string): void {
-    username = username.trim();
-    if (!username) { return; }
-    this.peticionesService.addUser({ username } as User)
-      .subscribe(user => {
-        this.users.push(user);
-      });
+  add() {
+    this.peticionesService.addUser(this.user).subscribe((response) => {
+      // You can perform actions after adding the user here
+      console.log('User added:', response);
+      // Clear the input fields after adding
+    });
   }
-  // deleteUser method
-  delete(user: User): void {
-    this.users = this.users.filter(h => h !== user);
-  
-    // Convierte user._id a número si es un número válido
-    const userId = parseInt(user._id, 10);
-  
-    // Llama a la función peticionesService.deleteUser() con userId como número
-    this.peticionesService.deleteUser(userId).subscribe();
   }
-}
+  //deleteUser method
+  // delete(user: User): void {
+  //   this.users = this.users.filter(h => h !== user);
+  
+  //   // Convierte user._id a número si es un número válido
+  //   const userId = parseInt(user._id, 10);
+  
+  //   // Llama a la función peticionesService.deleteUser() con userId como número
+  //   this.peticionesService.deleteUser(userId).subscribe();
+  // }
