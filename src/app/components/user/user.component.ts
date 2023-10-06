@@ -43,13 +43,13 @@ export class UserComponent implements OnInit {
     });
   }
   }
-  //deleteUser method
+  // deleteUser method
   // delete(user: User): void {
-  //   this.users = this.users.filter(h => h !== user);
+  //   this.users = this.users.filter(h => h !== user);}
   
   //   // Convierte user._id a número si es un número válido
   //   const userId = parseInt(user._id, 10);
   
   //   // Llama a la función peticionesService.deleteUser() con userId como número
   //   this.peticionesService.deleteUser(userId).subscribe();
-  // }
+  // 
