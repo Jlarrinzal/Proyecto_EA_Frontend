@@ -35,7 +35,7 @@ export class UserComponent implements OnInit {
         this.users.push(user);
       });
   }
-  // deleteUser method
+  // deleteUser methode
   delete(user: User): void {
     this.users = this.users.filter(h => h !== user);
   
