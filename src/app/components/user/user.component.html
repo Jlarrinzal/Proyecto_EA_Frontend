@@ -1,36 +1,44 @@
-<div class="row">
-  <div class="col-md-4 mx-auto">
-      <div class="card">
+<div class="container">
+    <div class="row">
+      <!-- Columna izquierda con el botón para mostrar/ocultar el formulario -->
+      <div class="col-md-6 mx-auto">
+        <button class="btn btn-primary" (click)="toggleFormVisibility()">{{ showAddForm ? 'Ocultar Formulario' : 'Mostrar Formulario' }}</button>
+        <div class="card" *ngIf="showAddForm">
           <div class="card-header">
-              AddUser
+            AddUser
           </div>
           <div class="card-body">
-              <form (submit)="add()">
-                  <div class="form-group">
-                      <input type="text" [(ngModel)]="user.username" name="username" class="form-control" placeholder="Username" required autofocus>
-                  </div>
-                  <div class="form-group">
-                      <input type="text" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" required autofocus>
-                  </div>
-                  <div class="form-group">
-                      <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" required>
-                  </div>
-                  <button type="submit" class="btn btn-primary btn-block">
-                      AddUser
-                  </button>
-              </form>
-           </div>
-   </div>
+            <form (submit)="add()">
+              <div class="form-group">
+                <input type="text" [(ngModel)]="user.username" name="username" class="form-control" placeholder="Username" required autofocus>
+              </div>
+              <div class="form-group">
+                <input type="text" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" required autofocus>
+              </div>
+              <div class="form-group">
+                <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">
+                AddUser
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Columna derecha con la lista de usuarios -->
+      <div class="col-md-6 mx-auto">
+        <h2>Users</h2>
+        <ul class="user">
+          <li *ngFor="let user of users">
+            <a routerLink="/detail/{{user.username}}">
+              <span class="badge">{{user.email}}</span> {{user.username}}
+            </a>
+            <!-- <button type="button" class="delete" title="delete hero"
+              (click)="delete(user)">x</button> -->
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-</div>
-  <h2>Users</h2>
-  <ul class="user">
-    
-<li *ngFor="let user of users">
-        <a routerLink="/detail/{{user.username}}">
-          <span class="badge">{{user.email}}</span> {{user.username}}
-        </a> 
-         <!-- <button type="button" class="delete" title="delete hero"
-          (click)="delete(user)">x</button>  -->
-      </li>
-    </ul> 
+  

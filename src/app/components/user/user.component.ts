@@ -41,6 +41,14 @@ export class UserComponent implements OnInit {
       // Clear the input fields after adding
     });
   }
+
+  showAddForm: boolean = false;
+showForm() {
+  this.showAddForm = true;
+}
+toggleFormVisibility() {
+  this.showAddForm = !this.showAddForm;
+}
   }
   // deleteUser method
   // delete(user: User): void {

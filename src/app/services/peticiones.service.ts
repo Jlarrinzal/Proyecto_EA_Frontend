@@ -43,11 +43,8 @@ export class PeticionesService {
 
   /** GET hero by id. Will 404 if id not found */
   getUser(_id: string): Observable<User> {
-    const url = `${this.usersUrl}/${_id}`;
-    return this.http.get<User>(url).pipe(
-      tap(_ => this.log(`fetched user id=${_id}`)),
-      catchError(this.handleError<User>(`getHero id=${_id}`))
-    );
+    const url = `${this.usersUrl}/readuser/${_id}`;
+    return this.http.get<User>(url)
   }
   /** PUT: update the hero on the server */
 /*   updateUser(user: User): Observable<any> {

@@ -7,13 +7,15 @@ import { ProductComponent } from './components/product/product.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     ProductComponent,
-    InicioComponent
+    InicioComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
