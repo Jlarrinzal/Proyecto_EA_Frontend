@@ -50,18 +50,15 @@ export class PeticionesService {
     );
   }
   /** PUT: update the hero on the server */
-  updateUser(user: User): Observable<any> {
+/*   updateUser(user: User): Observable<any> {
     return this.http.put(this.usersUrl, user, this.httpOptions).pipe(
       tap(_ => this.log(`updated user id=${user._id}`)),
       catchError(this.handleError<any>('updateUser'))
     );
-  }
+  } */
   /** POST: add a new hero to the server */
   addUser(user: User): Observable<User> {
-    return this.http.post<User>(this.usersUrl + '/createuser', user, this.httpOptions).pipe(
-      tap((newUser: User) => this.log(`added user w/ id=${newUser._id}`)),
-      catchError(this.handleError<User>('addUser'))
-    );
+    return this.http.post<User>(this.usersUrl + '/createuser', user);
   }
   /** DELETE: delete the hero from the server */
   deleteUser(_id: number): Observable<User> {

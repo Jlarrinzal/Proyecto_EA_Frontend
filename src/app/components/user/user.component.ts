@@ -13,8 +13,7 @@ import { NgModel } from '@angular/forms';
 export class UserComponent implements OnInit {
   users: User[] = [];
 
-  user:User = {
-    _id:'',
+  user = {
     username: '',
     email: '',
     password: ''

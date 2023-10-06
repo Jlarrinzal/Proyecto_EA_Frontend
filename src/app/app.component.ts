@@ -9,5 +9,5 @@ export class AppComponent {
   constructor() {
     
   }
-  title = 'Frontend_Proyecto';
+  title = 'Back Office';
 }
