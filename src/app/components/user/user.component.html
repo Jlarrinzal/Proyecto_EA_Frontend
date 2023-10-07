@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <!-- Columna izquierda con el botón para mostrar/ocultar el formulario -->
-    <div class="col-md-8 mx-auto">
+    <div class="col-md-4 mx-auto">
       <button class="btn bg-primary " (click)="toggleFormVisibility()" style="border-radius: 10px; margin-top: 20px; color:#fffcea;"  >
         {{ showAddForm ? 'Ocultar Formulario' : 'Crear usuario' }}
       </button>
       <div class="card bg-primary" *ngIf="showAddForm" style="border-radius: 10px; margin-top: 20px;">
-        <div class="card-header " style="color:#fffcea; background-color:#4c7031; border-radius: 10px;font-size: 30px;">
+        <div class="card-header " style="color:#fffcea; background-color:#4c7031; border-radius: 10px;font-size: 30px; text-align: center;">
           Crear usuario
         </div>
         <div class="card-body">
@@ -20,21 +20,21 @@
             <div class="form-group" style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;">
               <input type="password" [(ngModel)]="user.password" name="password" class="form-control" style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;" placeholder="Password" required>
             </div>
-            <div class="form-group" style="text-align: right; margin-top: 10px;">
-              <button type="submit" class="btn btn-block" style="border: 1px solid #fffcea; border-radius: 10px;">
+            <div class="form-group" style="text-align: center; margin-top: 10px;">
+              <button type="submit" class="btn btn-block" style="border: 1px solid #fffcea; border-radius: 10px; text-align: center; margin-left: auto; margin-right: auto;">
                 Añadir usuario
               </button>
-            </div>
+            </div>            
           </form>
         </div>
       </div>
     </div>
     
     <!-- Columna derecha con la lista de usuarios dentro de una tarjeta -->
-    <div class="col-md-8 mx-auto" style="margin-top: 20px;">
+    <div class="col-md-6 mx-auto" style="margin-top: 20px;">
       <div class="card bg-primary" style="border-radius: 10px; width: 100%;">
         <div class="card-body">
-          <h2 class="card-title" style="color:#fffcea; margin-bottom: 20px; background-color:#4c7031; border-radius: 10px;" >Lista de usuarios</h2>
+          <h2 class="card-title" style="color:#fffcea; margin-bottom: 20px; background-color:#4c7031; border-radius: 10px; text-align: center;" >Lista de usuarios</h2>
           <div class="user-list-container">
             <ol class="user-list">
               <li *ngFor="let user of users">
