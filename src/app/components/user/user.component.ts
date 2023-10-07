@@ -13,11 +13,12 @@ import { NgModel } from '@angular/forms';
 export class UserComponent implements OnInit {
   users: User[] = [];
 
-  user = {
+   user: any = {
     username: '',
     email: '',
     password: ''
-  }
+  } 
+ 
 
   constructor(
     private peticionesService: PeticionesService,
@@ -54,9 +55,6 @@ toggleFormVisibility() {
   // delete(user: User): void {
   //   this.users = this.users.filter(h => h !== user);}
   
-  //   // Convierte user._id a número si es un número válido
-  //   const userId = parseInt(user._id, 10);
-  
   //   // Llama a la función peticionesService.deleteUser() con userId como número
-  //   this.peticionesService.deleteUser(userId).subscribe();
+  //   this.peticionesService.deleteUser(this.user._id).subscribe();
   // 

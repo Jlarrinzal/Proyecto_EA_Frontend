@@ -1,0 +1,16 @@
+.id {
+    font-size: 20px; /* Tamaño de fuente más grande */
+    color: #868e96; /* Color diferente para el ID */
+  }
+  
+  /* Estilo para el nombre de usuario */
+  .username {
+    font-size: 20px; /* Tamaño de fuente más grande (igual que el ID) */
+    color: #df6919; /* Color diferente para el nombre de usuario */
+  }
+  li {
+    margin-bottom: 20px; /* Puedes ajustar el valor según la cantidad de espacio que desees */
+  }
+  span.id {
+    margin-right: 15px; /* Ajusta el valor según la cantidad de espacio que desees */
+  }
