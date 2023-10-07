@@ -49,11 +49,21 @@ export class UserDetailComponent implements OnInit{
     const id = String(this.route.snapshot.paramMap.get('_id'));
     this.peticionesService.updateUser(id, this.userupdate)
       .subscribe(updated => {
+        this.router.navigate(['user']);
+        const popUp = window.alert('Usuario actualizado');
         console.log('Usuario actualizado exitosamente', updated);
       });
   }
   toggleUpdateForm() {
-    this.showUpdateForm = true;
+    this.showUpdateForm = !this.showUpdateForm;
+    if (!this.showUpdateForm) {
+
+      this.userupdate = {
+        username: '',
+        email: '',
+        password: ''
+      };
+    }
   }
 
   cancelUpdate() {

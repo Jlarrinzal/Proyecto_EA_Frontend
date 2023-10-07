@@ -1,49 +1,58 @@
 <div class="container">
   <div class="row">
     <!-- Columna izquierda con el botón para mostrar/ocultar el formulario -->
-    <div class="col-md-6 mx-auto">
-      <button class="btn btn-primary" (click)="toggleFormVisibility()">
-        {{ showAddForm ? 'Ocultar Formulario' : 'Mostrar Formulario' }}
+    <div class="col-md-8 mx-auto">
+      <button class="btn bg-primary " (click)="toggleFormVisibility()" style="border-radius: 10px; margin-top: 20px; color:#fffcea;"  >
+        {{ showAddForm ? 'Ocultar Formulario' : 'Crear usuario' }}
       </button>
-      <div class="card" *ngIf="showAddForm">
-        <div class="card-header">
-          Add User
+      <div class="card bg-primary" *ngIf="showAddForm" style="border-radius: 10px; margin-top: 20px;">
+        <div class="card-header " style="color:#fffcea; background-color:#4c7031; border-radius: 10px;font-size: 30px;">
+          Crear usuario
         </div>
         <div class="card-body">
           <form (submit)="add()">
-            <div class="form-group">
-              <input type="text" [(ngModel)]="user.username" name="username" class="form-control" placeholder="Username" required autofocus>
+            <div class="form-group"style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;">
+              <input type="text" [(ngModel)]="user.username" name="username" style="border-radius: 10px; margin-bottom: 10px; background-color:#fffcea; color:#1D1D1B;"class="form-control" placeholder="Username" required autofocus>
             </div>
-            <div class="form-group">
-              <input type="text" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" required autofocus>
+            <div class="form-group"style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;">
+              <input type="text" [(ngModel)]="user.email" name="email" class="form-control" style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;" placeholder="Email" required autofocus>
             </div>
-            <div class="form-group">
-              <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" required>
+            <div class="form-group" style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;">
+              <input type="password" [(ngModel)]="user.password" name="password" class="form-control" style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;" placeholder="Password" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">
-              Add User
-            </button>
+            <div class="form-group" style="text-align: right; margin-top: 10px;">
+              <button type="submit" class="btn btn-block" style="border: 1px solid #fffcea; border-radius: 10px;">
+                Añadir usuario
+              </button>
+            </div>
           </form>
         </div>
       </div>
     </div>
     
-<!-- Columna derecha con la lista de usuarios -->
-<div class="col-md-6 mx-auto">
-  <h2>Users</h2>
-  <ol class="user-list"> <!-- Cambiamos a una lista ordenada -->
-    <li *ngFor="let user of users">
-      <a routerLink="/detail/{{user._id}}">
-        <div class="user-info">
-          <div class="user-badge">
-            <span class="badge">
-              <span class="id">Id: {{user._id}}</span>
-              <span class="username">Username: {{user.username}}</span>
-            </span>
+    <!-- Columna derecha con la lista de usuarios dentro de una tarjeta -->
+    <div class="col-md-8 mx-auto" style="margin-top: 20px;">
+      <div class="card bg-primary" style="border-radius: 10px; width: 100%;">
+        <div class="card-body">
+          <h2 class="card-title" style="color:#fffcea; margin-bottom: 20px; background-color:#4c7031; border-radius: 10px;" >Lista de usuarios</h2>
+          <div class="user-list-container">
+            <ol class="user-list">
+              <li *ngFor="let user of users">
+                <a routerLink="/detail/{{user._id}}">
+                  <div class="user-info">
+                    <div class="user-badge">
+                      <span class="badge text-left">
+                        <span class="id">Id: {{user._id}}</span>
+                        <span class="username">Username: {{user.username}}</span>
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ol>
           </div>
         </div>
-      </a>
-    </li>
-  </ol>
-</div>
+      </div>
+    </div>
+  </div>
 
