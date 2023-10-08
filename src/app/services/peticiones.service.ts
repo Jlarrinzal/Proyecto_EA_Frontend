@@ -16,12 +16,15 @@ export class PeticionesService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  private usersUrl = 'http://localhost:1337/users'; 
+  private usersUrl = 'http://localhost:9090/users'; 
    
   /** GET users from the server */
-  getUsers(): Observable<User[]> {
-  return this.http.get<User[]>(this.usersUrl + '/readall');
-  }
+  getUsers(page:number): Observable<User[]> {
+   const params = {
+    page: page.toString(),
+   };
+  return this.http.get<User[]>(this.usersUrl + '/readall/', {params});
+   }
 
   /** GET user by Id */
   getUser(id: string): Observable<User> {

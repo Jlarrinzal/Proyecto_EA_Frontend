@@ -19,6 +19,9 @@ export class UserComponent implements OnInit {
     password: ''
   } 
  
+  currentPage: number = 1; // Página actual
+  totalPages: number = 1; // Número total de páginas
+  showAddForm: boolean = false;
 
   constructor(
     private peticionesService: PeticionesService,
@@ -27,12 +30,17 @@ export class UserComponent implements OnInit {
   
   //Ordena obtener los 'heroes' cuando se inicializa la pagina
   ngOnInit(): void {
-    this.getUsers();
+    this.getUsers(this.currentPage);
   }
+  
   // Obtiene los 'heroes' proporcionados por el HeroService que a la vez le llegan del fichero de mock heroes
-  getUsers(): void {
-    this.peticionesService.getUsers()
-    .subscribe(users => this.users = users);
+  getUsers(page:number): void {
+    this.peticionesService.getUsers(page)
+    .subscribe((response: any) => {
+      this.users = response.docs;
+      this.currentPage = response.page;
+      this.totalPages = response.totalPages;
+    });
   }
   //addUser method
   add() {
@@ -43,18 +51,22 @@ export class UserComponent implements OnInit {
     });
   }
 
-  showAddForm: boolean = false;
 showForm() {
   this.showAddForm = true;
 }
 toggleFormVisibility() {
   this.showAddForm = !this.showAddForm;
 }
+
+previousPage() {
+  if (this.currentPage > 1) {
+    this.getUsers(this.currentPage - 1);
   }
-  // deleteUser method
-  // delete(user: User): void {
-  //   this.users = this.users.filter(h => h !== user);}
-  
-  //   // Llama a la función peticionesService.deleteUser() con userId como número
-  //   this.peticionesService.deleteUser(this.user._id).subscribe();
-  // 
+}
+
+nextPage() {
+  if (this.currentPage < this.totalPages) {
+    this.getUsers(this.currentPage + 1);
+  }
+}
+}
