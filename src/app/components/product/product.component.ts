@@ -17,7 +17,9 @@ export class ProductComponent implements OnInit{
    price: '',
    units: ''
  } 
-
+ currentPage: number = 1; // Página actual
+  totalPages: number = 1; // Número total de páginas
+  showAddForm: boolean = false;
 
  constructor(
    private productService: ProductService,
@@ -26,12 +28,17 @@ export class ProductComponent implements OnInit{
  
  //Ordena obtener los 'products' cuando se inicializa la pagina
  ngOnInit(): void {
-   this.getProducts();
+   this.getProducts(this.currentPage);
  }
  // Obtiene los 'products' proporcionados por el ProductService
- getProducts(): void {
-   this.productService.getProducts()
-   .subscribe(products => this.products = products);
+ getProducts(page:number): void {
+   this.productService.getProducts(page)
+   .subscribe((response: any) => {
+    this.products = response.docs;
+    this.currentPage = response.page;
+    this.totalPages = response.totalPages;
+  });
+   
  }
  //addUser method
  add() {
@@ -42,12 +49,23 @@ export class ProductComponent implements OnInit{
    });
  }
 
- showAddForm: boolean = false;
-showForm() {
- this.showAddForm = true;
+ showForm() {
+  this.showAddForm = true;
 }
 toggleFormVisibility() {
- this.showAddForm = !this.showAddForm;
+  this.showAddForm = !this.showAddForm;
+}
+
+previousPage() {
+  if (this.currentPage > 1) {
+    this.getProducts(this.currentPage - 1);
+  }
+}
+
+nextPage() {
+  if (this.currentPage < this.totalPages) {
+    this.getProducts(this.currentPage + 1);
+  }
 }
 
 }

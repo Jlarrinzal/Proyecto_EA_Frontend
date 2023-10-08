@@ -54,6 +54,12 @@
                 </li>
               </ol>
             </div>
+             <!-- Paginación centrada verticalmente -->
+          <div class="pagination" style="margin-top: auto; display: flex; justify-content: center; color:#fffcea;">
+            <button type="button" [disabled]="currentPage === 1" style="border: 1px solid #fffcea; border-radius: 10px; text-align: center; background-color:#4c7031; color:#fffcea; margin-right: 10px;" (click)="previousPage()"> Anterior </button>
+            <span> Página {{currentPage}} de {{totalPages}} </span>
+            <button type="button"[disabled]="currentPage === totalPages" style="border: 1px solid #fffcea; border-radius: 10px; text-align: center; background-color:#4c7031; color:#fffcea; margin-left: 10px;" (click)="nextPage()"> Siguiente </button>
+          </div>
           </div>
         </div>
       </div>

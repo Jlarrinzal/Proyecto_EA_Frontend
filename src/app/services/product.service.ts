@@ -20,8 +20,11 @@ export class ProductService {
   private productsURL = 'http://localhost:9090/products'; 
    
   /** GET products from the server */
-  getProducts(): Observable<Product[]> {
-  return this.http.get<Product[]>(this.productsURL + '/readall');
+  getProducts(page:number): Observable<Product[]> {
+    const params = {
+      page: page.toString(),
+     };
+    return this.http.get<Product[]>(this.productsURL + '/readall/', {params});
   }
 
   /** GET product by Id */
