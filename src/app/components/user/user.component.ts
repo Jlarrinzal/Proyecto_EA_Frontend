@@ -16,7 +16,8 @@ export class UserComponent implements OnInit {
    user: any = {
     username: '',
     email: '',
-    password: ''
+    password: '',
+    rol:'cliente'
   } 
  
   currentPage: number = 1; // Página actual
@@ -28,12 +29,20 @@ export class UserComponent implements OnInit {
     private router: Router
     ) { }
   
-  //Ordena obtener los 'heroes' cuando se inicializa la pagina
+  //Ordena obtener los 'users' cuando se inicializa la pagina
   ngOnInit(): void {
-    this.getUsers(this.currentPage);
+    const userRole = this.peticionesService.getRole();
+    if (this.peticionesService.loggedIn() && userRole === 'admin') {
+      console.log(userRole);
+      this.getUsers(this.currentPage);
+  } else {
+    this.router.navigate(['/inicio']);
   }
+}
+
+  //this.getUsers(this.currentPage);
   
-  // Obtiene los 'heroes' proporcionados por el HeroService que a la vez le llegan del fichero de mock heroes
+  // Obtiene los 'users' proporcionados por el HeroService que a la vez le llegan del fichero de mock heroes
   getUsers(page:number): void {
     this.peticionesService.getUsers(page)
     .subscribe((response: any) => {

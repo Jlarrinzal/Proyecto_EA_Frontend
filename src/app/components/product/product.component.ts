@@ -26,10 +26,16 @@ export class ProductComponent implements OnInit{
    private router: Router
    ) { }
  
- //Ordena obtener los 'products' cuando se inicializa la pagina
- ngOnInit(): void {
-   this.getProducts(this.currentPage);
- }
+   //Ordena obtener los 'productos' cuando se inicializa la pagina
+   ngOnInit(): void {
+    const userRole = this.productService.getRole();
+    if (this.productService.loggedIn() && userRole === 'admin') {
+      console.log(userRole);
+      this.getProducts(this.currentPage);
+  } else {
+    this.router.navigate(['/inicio']);
+  }
+}
  // Obtiene los 'products' proporcionados por el ProductService
  getProducts(page:number): void {
    this.productService.getProducts(page)

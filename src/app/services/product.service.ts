@@ -21,12 +21,17 @@ export class ProductService {
    
   /** GET products from the server */
   getProducts(page:number): Observable<Product[]> {
+    const token =this.getToken();
+    let headers =new HttpHeaders;
     const params = {
       page: page.toString(),
      };
-    return this.http.get<Product[]>(this.productsURL + '/readall/', {params});
+     if (token !== null) {
+      headers = headers.set("x-access-token", token);
+     } 
+    return this.http.get<Product[]>(this.productsURL + '/readall/', {params, headers});
   }
-
+  
   /** GET product by Id */
   getProduct(id: string): Observable<Product> {
     const url = `${this.productsURL}/readproduct/${id}`;
@@ -57,5 +62,24 @@ export class ProductService {
       return of([]);
     }
     return this.http.get<Product[]>(`${this.productsURL}/?name=${term}`);
+  }
+
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
+  getToken() {
+    return localStorage.getItem('token')
+  }
+  logout(){
+    localStorage.removeItem('token');
+    this.router.navigate(['/inicio']);
+  }
+  getRole() {
+    const token = this.getToken();
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.rol; 
+    }
+    return null; 
   }
 }

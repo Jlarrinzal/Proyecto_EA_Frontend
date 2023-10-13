@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     ProductComponent,
     InicioComponent,
     UserDetailComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+
   ],
   imports: [
     BrowserModule,
