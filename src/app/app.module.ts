@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import {PurchaseComponent} from './components/purchase/purchase.component';
+import { PurchaseDetailComponent } from './components/purchase-detail/purchase-detail.component';
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     InicioComponent,
     UserDetailComponent,
     ProductDetailComponent,
-
+    PurchaseComponent,
+    PurchaseDetailComponent
   ],
   imports: [
     BrowserModule,

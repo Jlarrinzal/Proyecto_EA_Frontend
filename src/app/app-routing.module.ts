@@ -5,6 +5,8 @@ import { UserComponent } from './components/user/user.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { PurchaseComponent } from './components/purchase/purchase.component';
+import { PurchaseDetailComponent } from './components/purchase-detail/purchase-detail.component';
 
 const routes: Routes = [
 {
@@ -31,6 +33,14 @@ const routes: Routes = [
 {
   path:'proddetail/:_id',
   component: ProductDetailComponent
+},
+{
+  path: 'purchase',
+  component: PurchaseComponent
+},
+{
+  path: 'purchasedetail/:_id',
+  component: PurchaseDetailComponent
 }
 ];
 
