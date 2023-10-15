@@ -12,6 +12,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import {PurchaseComponent} from './components/purchase/purchase.component';
 import { PurchaseDetailComponent } from './components/purchase-detail/purchase-detail.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

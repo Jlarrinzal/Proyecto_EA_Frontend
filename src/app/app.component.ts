@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PeticionesService } from './services/peticiones.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,7 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor() {
+  constructor(
+    public peticionesService: PeticionesService) {
     
   }
   title = 'Back Office';

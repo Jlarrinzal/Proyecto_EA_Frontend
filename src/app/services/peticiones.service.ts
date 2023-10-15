@@ -20,11 +20,17 @@ export class PeticionesService {
    
   /** GET users from the server */
   getUsers(page:number): Observable<User[]> {
-   const params = {
+    const token =this.getToken();
+    let headers =new HttpHeaders;
+    const params = {
     page: page.toString(),
    };
-  return this.http.get<User[]>(this.usersUrl + '/readall/', {params});
-   }
+   if (token !== null) {
+    headers = headers.set("x-access-token", token);
+   } 
+    return this.http.get<User[]>(this.usersUrl + '/readall/', {params, headers});
+     
+}
 
   /** GET user by Id */
   getUser(id: string): Observable<User> {
@@ -56,5 +62,27 @@ export class PeticionesService {
       return of([]);
     }
     return this.http.get<User[]>(`${this.usersUrl}/?name=${term}`);
+  }
+
+  signIn(user: User) { 
+    return this.http.post<any>(this.usersUrl + '/signin', user);
+  }
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
+  getToken() {
+    return localStorage.getItem('token')
+  }
+  logout(){
+    localStorage.removeItem('token');
+    this.router.navigate(['/inicio']);
+  }
+  getRole() {
+    const token = this.getToken();
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.rol; 
+    }
+    return null; 
   }
 }
