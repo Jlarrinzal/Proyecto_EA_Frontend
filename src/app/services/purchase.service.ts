@@ -30,7 +30,7 @@ export class PurchaseService {
   /** GET purchase by Id */
   getPurchase(id: string): Observable<Purchase> {
     const url = `${this.purchaseURL}/readpurchase/${id}`;
-    return this.http.get<Purchase>(url)
+    return this.http.get<Purchase>(url);
   }
 
   /** PUT: update the purchase on the server */

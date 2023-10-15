@@ -39,7 +39,7 @@ const routes: Routes = [
   component: PurchaseComponent
 },
 {
-  path: 'puchasedetail/:id',
+  path: 'purchasedetail/:_id',
   component: PurchaseDetailComponent
 }
 ];

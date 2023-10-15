@@ -31,19 +31,21 @@
       </div>
       
       <!-- Columna derecha con la lista de purchase dentro de una tarjeta -->
-      <div class="col-md-6 mx-auto" style="margin-top: 20px;">
+      <div class="col-md-6 mx-auto" style="margin-top: 20px;" style="margin: 10px">
         <div class="card bg-primary" style="border-radius: 10px; width: 100%;">
           <div class="card-body">
             <h2 class="card-title" style="color:#fffcea; margin-bottom: 20px; background-color:#4c7031; border-radius: 10px; text-align: center;" >Lista de compras</h2>
             <div class="user-list-container">
               <ol class="user-list">
                 <li *ngFor="let purchase of purchases">
-                  <a routerLink="/proddetail/{{purchase._id}}">
+                  <a routerLink="/purchasedetail/{{purchase._id}}">
                     <div class="purchase-info">
                       <div class="purchase-badge">
                         <span class="badge text-left">
-                          <span class="id">Id: {{purchase._id}}</span>
-                          <span class="user">User: {{purchase.user}}</span>
+                          <span>Id: {{purchase._id}}</span>   
+                          <span class="user">         Usuario: {{purchase.user}}</span>
+                          <span class="user">         Producto: {{purchase.product}}</span>
+                          <span class="user">         Unidades: {{purchase.quantity}}</span>
                         </span>
                       </div>
                     </div>

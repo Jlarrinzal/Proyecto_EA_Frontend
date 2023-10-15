@@ -11,7 +11,7 @@ import { PurchaseService } from 'src/app/services/purchase.service';
 })
 export class PurchaseDetailComponent implements OnInit {
   
-  purchase!: Purchase;
+  purchase: Purchase | undefined;
 
   purchaseupdate: any = {
     user:'',
@@ -32,6 +32,7 @@ export class PurchaseDetailComponent implements OnInit {
   }
   getPurchase(): void {
     const id = String(this.route.snapshot.paramMap.get('_id'));
+    console.log(id);
     this.purchaseService.getPurchase(id)
       .subscribe(purchase => this.purchase = purchase);
   }
