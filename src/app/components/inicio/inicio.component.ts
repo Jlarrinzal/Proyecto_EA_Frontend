@@ -14,6 +14,10 @@ export class InicioComponent {
     password: ''
   } 
 
+  ngOnInit(): void {
+    localStorage.removeItem('token');
+}
+
   constructor(
     private peticionesService: PeticionesService,
     private router: Router
