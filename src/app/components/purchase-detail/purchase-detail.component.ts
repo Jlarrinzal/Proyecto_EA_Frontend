@@ -14,8 +14,8 @@ export class PurchaseDetailComponent implements OnInit {
   purchase: Purchase | undefined;
 
   purchaseupdate: any = {
-    user:'',
-    product:'',
+    username:'',
+    name:'',
     quantity: ''
   }
 
@@ -61,8 +61,8 @@ export class PurchaseDetailComponent implements OnInit {
     if (!this.showUpdateForm) {
 
       this.purchaseupdate = {
-        user: '',
-        product: '',
+        username: '',
+        name: '',
         quantity:''
       };
     }

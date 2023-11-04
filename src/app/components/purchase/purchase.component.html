@@ -12,10 +12,10 @@
           <div class="card-body">
             <form (submit)="add()">
               <div class="form-group"style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;">
-                <input type="text" [(ngModel)]="purchase.user" name="Usuario" style="border-radius: 10px; margin-bottom: 10px; background-color:#fffcea; color:#1D1D1B;"class="form-control" placeholder="Usuario" required autofocus>
+                <input type="text" [(ngModel)]="purchase.username" name="Usuario" style="border-radius: 10px; margin-bottom: 10px; background-color:#fffcea; color:#1D1D1B;"class="form-control" placeholder="Usuario" required autofocus>
               </div>
               <div class="form-group"style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;">
-                <input type="text" [(ngModel)]="purchase.product" name="Producto" class="form-control" style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;" placeholder="Producto" required autofocus>
+                <input type="text" [(ngModel)]="purchase.name" name="Producto" class="form-control" style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;" placeholder="Producto" required autofocus>
               </div>
               <div class="form-group"style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;">
                 <input type="text" [(ngModel)]="purchase.quantity" name="Unidades" class="form-control" style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;" placeholder="Unidades" required autofocus>
@@ -43,8 +43,8 @@
                       <div class="purchase-badge">
                         <span class="badge text-left">
                           <span>Id: {{purchase._id}}</span>   
-                          <span class="user">         Usuario: {{purchase.user}}</span>
-                          <span class="user">         Producto: {{purchase.product}}</span>
+                          <span class="user">         Usuario: {{purchase.username}}</span>
+                          <span class="user">         Producto: {{purchase.name}}</span>
                           <span class="user">         Unidades: {{purchase.quantity}}</span>
                         </span>
                       </div>
