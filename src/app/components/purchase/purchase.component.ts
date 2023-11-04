@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Purchase } from 'src/app/models/purchase';
 import { PurchaseService } from 'src/app/services/purchase.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { PurchaseNotificationComponent } from 'src/app/components/notifications/purchase-notification/purchase-notification.component';
+import { PurchaseFailureNotificationComponent } from '../notifications/purchase-failure-notification/purchase-failure-notification.component';
+
 
 @Component({
   selector: 'app-purchase',
@@ -12,8 +16,8 @@ export class PurchaseComponent implements OnInit{
   purchases: Purchase[] = [];
 
   purchase: any = {
-   user: '',
-   product: '',
+   username: '',
+   name: '',
    quantity: ''
  } 
  currentPage: number = 1; // Página actual
@@ -22,7 +26,8 @@ export class PurchaseComponent implements OnInit{
 
  constructor(
    private purchaseService: PurchaseService,
-   private router: Router
+   private router: Router,
+   private dialog: MatDialog
    ) { }
  
  //Ordena obtener los 'purchases' cuando se inicializa la pagina
@@ -44,9 +49,39 @@ export class PurchaseComponent implements OnInit{
    this.purchaseService.addPurchase(this.purchase).subscribe((response) => {
      // You can perform actions after adding the purchase here
      console.log('purchase added:', response);
+     this.showPurchaseNotification();
      // Clear the input fields after adding
-   });
+    this.purchase = {
+      username: '',
+      name: '',
+      quantity: ''
+    };
+   },
+   (error) => {
+    // Purchase failed
+    console.error('Purchase failed:', error);
+    // Show a failure notification
+    this.showFailureNotification();
+      // Clear the input fields after adding
+      this.purchase = {
+        username: '',
+        name: '',
+        quantity: ''
+      };
+  });
  }
+
+ showPurchaseNotification() {
+  this.dialog.open(PurchaseNotificationComponent, {
+    width: '300px',
+  });
+}
+
+showFailureNotification() {
+  this.dialog.open(PurchaseFailureNotificationComponent, {
+    width: '435px',
+  });
+}
 
  showForm() {
   this.showAddForm = true;

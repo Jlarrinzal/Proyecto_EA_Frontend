@@ -34,14 +34,14 @@ export class PurchaseService {
   }
 
   /** PUT: update the purchase on the server */
-  updatePurchase(id: string, user: Purchase): Observable<Purchase> {
+  updatePurchase(id: string, username: Purchase): Observable<Purchase> {
     const url = `${this.purchaseURL}/updatepurchase/${id}`;
-    return this.http.put<Purchase>(url, user);
+    return this.http.put<Purchase>(url, username);
   }
 
   /** POST: add a new purchase to the server */
-  addPurchase(user: any): Observable<Purchase> {
-    return this.http.post<Purchase>(this.purchaseURL + '/createpurchase', user);
+  addPurchase(username: any): Observable<Purchase> {
+    return this.http.post<Purchase>(this.purchaseURL + '/createpurchase', username);
   }
   
   /** DELETE: delete the purchase from the server */
