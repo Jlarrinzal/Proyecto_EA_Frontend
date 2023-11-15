@@ -17,7 +17,8 @@ export class ProductService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  private productsURL = 'http://localhost:9090/products'; 
+  /** private productsURL = 'http://localhost:9090/products';  LOCAL **/
+  private productsURL = 'http://km0-api:9090/products'; 
    
   /** GET products from the server */
   getProducts(page:number): Observable<Product[]> {

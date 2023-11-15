@@ -17,7 +17,8 @@ export class PurchaseService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  private purchaseURL = 'http://localhost:9090/purchases'; 
+  /** private purchaseURL = 'http://localhost:9090/purchases';  LOCAL **/
+  private purchaseURL = 'http://km0-api:9090/purchases'; 
    
   /** GET purchases from the server */
   getPurchases(page:number): Observable<Purchase[]> {
